@@ -1,0 +1,43 @@
+{
+  "version": "first-playable-1",
+  "items": {
+    "wood": {"name":"Timber","mass":1.0}, "stone":{"name":"Stone","mass":1.2},
+    "fiber":{"name":"Plant fibre","mass":0.15}, "herb":{"name":"Medicinal leaves","mass":0.1},
+    "raw_water":{"name":"Untreated water","mass":1.0}, "water":{"name":"Drinking water","mass":1.0},
+    "raw_food":{"name":"Fresh catch","mass":0.4,"shelfLife":480}, "food":{"name":"Prepared food","mass":0.3,"shelfLife":1200},
+    "plank":{"name":"Planks","mass":0.7}, "cloth":{"name":"Cloth","mass":0.2},
+    "bandage":{"name":"Dressings","mass":0.2}, "cargo":{"name":"Recovered supplies","mass":1.5}
+  },
+  "recipes": [
+    {"id":"planks","name":"Cut planks","inputs":{"wood":2},"outputs":{"plank":3}},
+    {"id":"cloth","name":"Weave cloth","inputs":{"fiber":4},"outputs":{"cloth":2}},
+    {"id":"meal","name":"Cook fresh catch","inputs":{"raw_food":2,"wood":1},"outputs":{"food":3},"requires":"food_rack"},
+    {"id":"water","name":"Treat water","inputs":{"raw_water":3,"wood":1},"outputs":{"water":3},"requires":"waterworks"},
+    {"id":"dressings","name":"Prepare dressings","inputs":{"herb":2,"cloth":1},"outputs":{"bandage":1}}
+  ],
+  "buildings": [
+    {"id":"shelter","name":"Shelter","inputs":{"wood":4,"fiber":3},"radius":2.2},
+    {"id":"store","name":"Shared store","inputs":{"wood":4,"stone":2},"radius":1.5},
+    {"id":"waterworks","name":"Water treatment","inputs":{"wood":3,"stone":2},"radius":1.4},
+    {"id":"food_rack","name":"Food processing","inputs":{"wood":3,"fiber":2},"radius":1.4},
+    {"id":"boat","name":"Coastal boat","inputs":{"plank":8,"wood":3,"cloth":2},"radius":2.0},
+    {"id":"trade_post","name":"Supply relay","inputs":{"plank":4,"cargo":2},"radius":1.4}
+  ],
+  "production": [
+    {"id":"water","building":"waterworks","seconds":8,"inputs":{"raw_water":2,"wood":1},"outputs":{"water":3}},
+    {"id":"food","building":"food_rack","seconds":8,"inputs":{"raw_food":2,"wood":1},"outputs":{"food":3}},
+    {"id":"timber","building":"store","seconds":10,"inputs":{"wood":2},"outputs":{"plank":3}}
+  ],
+  "quests": [
+    {"id":"camp","title":"A place to return to","description":"Find the marked, supported camp site and press E to establish your camp.","condition":"camp","reward":{"water":1}},
+    {"id":"safety","title":"Water and a roof","description":"Build a shelter and water treatment. Keep at least one unit of drinking water.","condition":"safety","reward":{"fiber":2}},
+    {"id":"stores","title":"Food for tomorrow","description":"Build a shared store and food processor. Bring prepared food into camp storage.","condition":"stores","reward":{"raw_food":2}},
+    {"id":"work","title":"Many hands","description":"Assign Mara at a work site. Supply its inputs and complete one production cycle.","condition":"work","reward":{"wood":2}},
+    {"id":"boat","title":"Beyond this shore","description":"Craft planks and cloth, then build a boat on shallow water.","condition":"boat","reward":{}},
+    {"id":"explore","title":"Along the coast","description":"Board the boat with E. Sail at least 80 metres and land at the marked supply cove.","condition":"explore","reward":{}},
+    {"id":"return","title":"Bring it home","description":"Recover supplies, return to camp and deposit cargo into the shared store.","condition":"return","reward":{"cloth":1}},
+    {"id":"prepare","title":"A warning on the horizon","description":"Stock six water and four food at camp. Choose Prepare for storm at the camp to begin the forecast.","condition":"prepare","reward":{}},
+    {"id":"storm","title":"Hold together","description":"Keep the community supplied through the forecast storm. Shelter protects you from exposure.","condition":"storm","reward":{"wood":2}},
+    {"id":"connection","title":"A future worth building","description":"Build a supply relay and complete its finite supply exchange. Your persistent settlement continues after this chapter.","condition":"connection","reward":{}}
+  ]
+}

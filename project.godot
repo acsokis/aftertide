@@ -1,0 +1,23 @@
+config_version=5
+
+[application]
+config/name="AFTERTIDE"
+config/description="Survive the islands. Build a future."
+config/icon="res://Aftertide/Icon.svg"
+run/main_scene="res://Aftertide/Main.tscn"
+config/features=PackedStringArray("4.7", "C#")
+
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[dotnet]
+project/assembly_name="Aftertide"
+
+[physics]
+3d/default_gravity=18.0
+
+[rendering]
+lights_and_shadows/directional_shadow/size=2048
+anti_aliasing/quality/msaa_3d=2

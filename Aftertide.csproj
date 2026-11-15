@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <GodotSdkVersion Condition="'$(GodotSdkVersion)' == ''">4.7.2</GodotSdkVersion>
+  </PropertyGroup>
+  <Import Project="Sdk.props" Sdk="Godot.NET.Sdk" Version="$(GodotSdkVersion)" Condition="'$(AftertideGodotSdkPath)' == ''" />
+  <Import Project="$(AftertideGodotSdkPath)/Sdk/Sdk.props" Condition="'$(AftertideGodotSdkPath)' != ''" />
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup><Compile Remove="tests/**/*.cs" /><Compile Remove="outputs/**/*.cs" /></ItemGroup>
+  <Import Project="Sdk.targets" Sdk="Godot.NET.Sdk" Version="$(GodotSdkVersion)" Condition="'$(AftertideGodotSdkPath)' == ''" />
+  <Import Project="$(AftertideGodotSdkPath)/Sdk/Sdk.targets" Condition="'$(AftertideGodotSdkPath)' != ''" />
+</Project>

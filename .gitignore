@@ -1,0 +1,11 @@
+.godot/
+**/bin/
+**/obj/
+outputs/
+saves/
+.tools/
+.env
+.env.*
+*.user
+*.log
+.publication-state.json
