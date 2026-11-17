@@ -12,7 +12,7 @@ Preserve a **curated, project-specific development context** across GitHub check
 - Current playable detail is **one local starting area** near northeastern Jamaica, not a finished seamless playable Caribbean. Do not claim global streaming, advanced RTX/PhysX features, multiplayer, or verified performance.
 - Current priorities are in `docs/ROADMAP.md`: manual full-chapter 3D traversal/QA, save integrity, workforce navigation and original art, fork portability and profiling.
 - Review `README.md`, `AGENTS.md`, `NOTICE.md`, `docs/ARCHITECTURE.md`, `docs/SOURCES.md`, and `docs/ROADMAP.md` before implementation.
-- The **existing root `AGENTS.md` takes precedence** for repo-specific engineering policies. Do not overwrite it with generic cross-IDE instructions.
+- The **root `AGENTS.md` is authoritative** and now unifies the original game-engine policies with cross-IDE, Local AI and ComfyUI safety guidance.
 
 ## Developer environments and account boundaries
 - OpenAI Codex in VS Code: sign in through **ChatGPT** using the existing paid ChatGPT account; do not substitute a metered API key silently.
@@ -32,9 +32,10 @@ Preserve a **curated, project-specific development context** across GitHub check
 
 ## Current handoff (2026-11-17)
 - Objective: Make AFTERTIDE's ongoing development context accessible across the supported agent-capable editors without relying on a single vendor chat session.
-- The repository already had a project-specific `AGENTS.md` and developer docs. They are retained unchanged.
+- On 2026-11-17 the maintainer explicitly authorized updating `AGENTS.md`. It has now been rewritten to combine the original game-specific safeguards with cross-IDE multi-agent use and local AI/ComfyUI compatibility and cleanup rules. Architecture, licensing and validation requirements remain in force.
 - Cross-IDE guidance is now stored in this document and the Copilot instruction file at `.github/copilot-instructions.md`.
-- Existing Windows IDE installations, remote agent session settings, extension versions and OAuth login status are **not verified or modified**.
+- Existing Windows IDE installations, remote agent session settings, extension versions, local AI and ComfyUI folders, active models/workflows, and OAuth login status are **not verified or modified**: GitHub access alone cannot inspect the local Windows file system.
+- **Next required input for local cleanup:** a read-only Windows inventory of candidate installations/models and their active workflow dependencies. No local file deletions have taken place. Do not infer that any specific model is obsolete merely from its folder name or modification date.
 - A screenshot in the originating discussion showed an `IslandSurvivor / AfterTide` editor/session entry with a large displayed diff; it does not prove all local changes have been committed and pushed. Check Git status locally before any pull/merge.
 - This is the independent AFTERTIDE repository `acsokis/aftertide`, not the separate repository `vizisiklo/IslandSurvival_Alpha_0.2`. Do not copy code or data between them without rights review.
 
@@ -47,3 +48,9 @@ Preserve a **curated, project-specific development context** across GitHub check
 
 ## Reference
 https://code.visualstudio.com/docs/agents/run/remote-agent-sessions#_github-environments-preview
+
+## Local AI and ComfyUI handoff
+- Goal: use the newest **tested, compatible** local model/runtime per actual task; eliminate truly unused duplicate installations, including ComfyUI variants, only after inspection.
+- Check active executable paths, Git versions, Python environments, ComfyUI model-path YAML, custom nodes, saved workflows, large checkpoints, LoRAs and Ollama/LocalAI model stores as applicable.
+- Prefer one shared models path when supported, with referential integrity checks and a quarantine/backup step before permanent deletion.
+- No local scanning or deletion has been carried out from the connected GitHub environment.
