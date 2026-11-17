@@ -90,9 +90,10 @@ foreach ($root in $modelRoots) {
             }
         }
 }
-$weights | Sort-Object Path -Unique | Export-Csv (Join-Path $out 'weights.csv') -NoTypeInformation -Encoding UTF8
+$uniqueWeights = @($weights | Sort-Object Path -Unique)
+$uniqueWeights | Export-Csv (Join-Path $out 'weights.csv') -NoTypeInformation -Encoding UTF8
 $configs | Sort-Object Path -Unique | Export-Csv (Join-Path $out 'configs-workflows.csv') -NoTypeInformation -Encoding UTF8
-$weights | Group-Object File,Bytes | Where-Object { $_.Count -gt 1 } |
+$uniqueWeights | Group-Object File,Bytes | Where-Object { $_.Count -gt 1 } |
     ForEach-Object { $_.Group } |
     Sort-Object Path -Unique |
     Export-Csv (Join-Path $out 'potential-duplicates-NOT-CONFIRMED.csv') -NoTypeInformation -Encoding UTF8
@@ -110,7 +111,7 @@ Generated: $(Get-Date -Format s)
 Roots scanned: $($roots -join ', ')
 Depth: $MaxDepth
 Folder candidates: $($directories.Count)
-Model-like files: $($weights.Count)
+Model-like files: $($uniqueWeights.Count)
 
 IMPORTANT
 - No files were changed, moved or deleted.
@@ -122,4 +123,4 @@ IMPORTANT
 "@ | Set-Content -LiteralPath (Join-Path $out 'README.txt') -Encoding UTF8
 Write-Host ""
 Write-Host "Read-only audit saved to: $out"
-Write-Host ("Found " + $directories.Count + " folder candidates and " + $weights.Count + " model-like files.")
+Write-Host ("Found " + $directories.Count + " folder candidates and " + $uniqueWeights.Count + " model-like files.")
